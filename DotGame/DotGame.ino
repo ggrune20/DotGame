@@ -67,7 +67,7 @@ void loop()
   ClearSlate();
 }
   
-void DrawPlayer()
+void DrawPlayer() //direction buttons for moving player
 {
   DrawPx(xplayer, yplayer, Blue);
 }
@@ -113,28 +113,29 @@ void MovePlayer()
   }
 }
 
-void Goal()
+void Goal() //creates the goal dot that player wants to reach
 {
   DrawPx(xgoal, ygoal, Green);
 }
 
-void Made()
+void Made() //spawns new goal dot on other side of meggy screen when player reaches the goal coordinates
 {
-  if(xplayer == 6 && yplayer == ygoal)
+  if(xplayer == xgoal && yplayer == ygoal)
   {
     Tone_Start(1900, 100);
-    xgoal = 0;
-    ygoal = random(8);
-  }
-  if(xplayer == 0 && yplayer == ygoal)
-  {
-    Tone_Start(1900, 100);
-    xgoal = 6;
+    if(xgoal == 6)
+    {
+      xgoal = 0;
+    }
+    else
+    {
+      xgoal = 6;
+    }
     ygoal = random(8);
   }
 }
 
-void DrawEnemies()
+void DrawEnemies() //creates the red enemy walls
 {
   for(int i = 0; i < 29; i++)
   {
@@ -143,7 +144,7 @@ void DrawEnemies()
 }
 
 
-void Lose()
+void Lose() //Player moves back to starting coordinates if they hit a red enemy wall
 {
   for(int i = 0; i < 29; i++)
   {
