@@ -43,6 +43,7 @@ int xplayer;
 int yplayer;
 int xgoal = 6;
 int ygoal = 7;
+int lights;
 
 boolean GoalMade = false;
 
@@ -52,6 +53,7 @@ void setup()
   MeggyJrSimpleSetup();
   xplayer=0;
   yplayer=0;
+  lights=1;
 }
 
 
@@ -63,6 +65,7 @@ void loop()
   MovePlayer();
   Made();
   Lose();
+  TopLights();
   DisplaySlate();
   ClearSlate();
 }
@@ -132,6 +135,7 @@ void Made() //spawns new goal dot on other side of meggy screen when player reac
       xgoal = 6;
     }
     ygoal = random(8);
+    lights*=2;
   }
 }
 
@@ -157,5 +161,10 @@ void Lose() //Player moves back to starting coordinates if they hit a red enemy 
       ygoal = random(8);
     }
   }
+}
+
+void TopLights()
+{
+  SetAuxLEDs(lights-1);
 }
  
