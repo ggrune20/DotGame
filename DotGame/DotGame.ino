@@ -159,6 +159,7 @@ void Lose() //Player moves back to starting coordinates if they hit a red enemy 
       yplayer = 0;
       xgoal = 6;
       ygoal = random(8);
+      lights = 1;
     }
   }
 }
@@ -173,7 +174,6 @@ void TopLights()
       for(int a = 0; a < 8; a++)
       {
         DrawPx(i, a, Blue);
-        Tone_Start(1900, 400);
       }
     }
   }
