@@ -166,5 +166,19 @@ void Lose() //Player moves back to starting coordinates if they hit a red enemy 
 void TopLights()
 {
   SetAuxLEDs(lights-1);
+  if(lights == 256)
+  {
+    for(int i = 0; i < 8; i++)
+    {
+      for(int a = 0; a < 8; a++)
+      {
+        DrawPx(i, a, Blue);
+        Tone_Start(1900, 400);
+      }
+    }
+  }
 }
+
+
+
  
